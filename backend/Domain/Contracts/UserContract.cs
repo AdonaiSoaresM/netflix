@@ -8,6 +8,7 @@ namespace Domain.Contracts
         public static void AddUserContract(this User user)
         {
             new AddNotifications<User>(user)
+                .IfNullOrEmpty(u => u.Name)
                 .IfNullOrInvalidLength(u => u.Email, 1, 200)
                 .IfNullOrEmpty(u => u.Password)
                 .IfNotEmail(u => user.Email);

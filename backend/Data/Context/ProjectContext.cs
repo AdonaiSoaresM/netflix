@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using prmToolkit.NotificationPattern;
 
 namespace Data.Context
 {
@@ -11,8 +12,10 @@ namespace Data.Context
 
         public DbSet<User> Users { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Ignore<Notification>();
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

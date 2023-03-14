@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data.Context;
+using Domain.Entities;
+using Domain.Interfaces;
 
 namespace Data.Repositories
 {
-    public class RepositoryUser
+    public class RepositoryUser : RepositoryBase<User>, IRepositoryUser
     {
-
+        public RepositoryUser(ProjectContext context) : base(context)
+        {
+        }
     }
 }

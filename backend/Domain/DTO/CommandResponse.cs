@@ -13,18 +13,18 @@ namespace Domain.DTO
         public object Data { get; set; }
         public IEnumerable<Notification> Notifications { get; set; }
 
-        public CommandResponse(object data, IEnumerable<Notification> notifications)
+        public CommandResponse(object data, INotifiable notifications)
         {
             Sucess = true;
-            Data = data;
-            Notifications = notifications;
+            Data = notifications.IsValid() ? data : null;
+            Notifications = notifications.Notifications;
         }
 
-        public CommandResponse(IEnumerable<Notification> notifications)
+        public CommandResponse(INotifiable notifications)
         {
             Sucess = false;
             Data = null;
-            Notifications = notifications;
+            Notifications = notifications.Notifications;
         }
     }
 }

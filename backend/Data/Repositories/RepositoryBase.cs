@@ -1,15 +1,11 @@
 ﻿using Data.Context;
 using Domain.Entities;
+using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class RepositoryBase<TEntity> where TEntity : EntityBase
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
         private readonly ProjectContext _context;
         private readonly DbSet<TEntity> _entityContext;
@@ -18,6 +14,36 @@ namespace Data.Repositories
         {
             _context = context;
             _entityContext = context.Set<TEntity>();
+        }
+
+        public void Create(TEntity entity)
+        {
+            _entityContext.Add(entity);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _entityContext.Update(entity);
+        }
+
+        public IEnumerable<TEntity> List()
+        {
+            return _entityContext.AsEnumerable();
+        }
+
+        public TEntity Find(Guid id)
+        {
+            return _entityContext.Find(id);
+        }
+
+        public void Delete(TEntity entity)
+        {
+            _entityContext.Remove(entity);
+        }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
         }
     }
 }

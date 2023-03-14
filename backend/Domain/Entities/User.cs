@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.Contracts;
+
+namespace Domain.Entities
 {
     public class User : EntityBase
     {
@@ -11,6 +13,8 @@
             Email = email;
             Name = name;
             Password = password;
+
+            this.AddUserContract();
         }
     }
 }
