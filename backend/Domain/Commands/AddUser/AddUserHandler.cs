@@ -20,7 +20,8 @@ namespace Domain.Commands.AddUser
         {
             if (request.Password != request.ConfirmPassword)
             {
-                AddNotification("User", "Password dont match");
+                AddNotification("User", "Passwords dont match");
+                return Task.FromResult(new CommandResponse(this));
             }
 
             var passwordHasher = new PasswordHasher<AddUserRequest>();

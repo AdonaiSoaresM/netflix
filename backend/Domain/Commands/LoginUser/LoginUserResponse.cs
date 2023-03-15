@@ -8,6 +8,13 @@ namespace Domain.Commands.LoginUser
 {
     public class LoginUserResponse
     {
+        public string Token { get; set; }
+        public string Name { get; set; }
 
+        public LoginUserResponse(string token, string name)
+        {
+            Token = token;
+            Name = name;
+        }
     }
 }

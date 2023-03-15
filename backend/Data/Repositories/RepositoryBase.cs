@@ -7,8 +7,8 @@ namespace Data.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
-        private readonly ProjectContext _context;
-        private readonly DbSet<TEntity> _entityContext;
+        protected readonly ProjectContext _context;
+        protected readonly DbSet<TEntity> _entityContext;
 
         public RepositoryBase(ProjectContext context)
         {
