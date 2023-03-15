@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using prmToolkit.NotificationPattern;
 
 namespace Domain.Commands.AddUser
@@ -17,7 +18,15 @@ namespace Domain.Commands.AddUser
 
         Task<CommandResponse> IRequestHandler<AddUserRequest, CommandResponse>.Handle(AddUserRequest request, CancellationToken cancellationToken)
         {
-            var user = new User(request.Email, request.Name, request.Password);
+            if (request.Password != request.ConfirmPassword)
+            {
+                AddNotification("User", "Password dont match");
+            }
+
+            var passwordHasher = new PasswordHasher<AddUserRequest>();
+            var password = passwordHasher.HashPassword(request, request.Password);
+
+            var user = new User(request.Email, request.Name, password);
             AddNotifications(user);
             if (IsInvalid())
             {
