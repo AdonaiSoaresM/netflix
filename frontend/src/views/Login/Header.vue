@@ -8,7 +8,7 @@ export default {
     name: "HeaderLogin"
 }
 </script>
-<style>
+<style scoped>
     .header {
         display: flex;
         width: 100%;

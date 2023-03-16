@@ -33,13 +33,16 @@ builder.Services.AddSwaggerGen(config =>
         }
     });
 });
-
 builder.Services.AddDependecyInjectionConfiguration();
 builder.Services.AddMediatRConfiguration();
 builder.Services.AddDbContextConfiguration();
 builder.Services.AddJwtBearerConfiguration(builder.Configuration);
 
 var app = builder.Build();
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

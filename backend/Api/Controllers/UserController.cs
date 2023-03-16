@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -17,7 +17,7 @@ namespace backend.Controllers
 
         [Authorize]
         [HttpPost("add")]
-        public async Task<IActionResult> Add(AddUserRequest request)
+        public async Task<IActionResult> Add([FromBody] AddUserRequest request)
         {
             var response = await _mediator.Send(request);
 
@@ -32,7 +32,7 @@ namespace backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginUserRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginUserRequest request)
         {
             var response = await _mediator.Send(request);
 
@@ -44,6 +44,16 @@ namespace backend.Controllers
             {
                 return Ok(response);
             }
+        }
+
+        [Authorize]
+        [HttpGet("validate")]
+        public async Task<IActionResult> Validate()
+        {
+            return Ok(new
+            {
+                status = "Token Valid"
+            });
         }
     }
 }
