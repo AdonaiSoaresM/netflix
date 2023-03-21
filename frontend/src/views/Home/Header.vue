@@ -16,7 +16,6 @@ export default {
     justify-content: space-between;
     width: 100%;
     padding: 0px 40px 0px 20px;
-    background-color: rgb(25, 25, 25);
 }
 
 .user-avatar {

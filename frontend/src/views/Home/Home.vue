@@ -1,7 +1,6 @@
 <template lang="">
   <div class="home">
     <Header />
-    FALAA PEIxee
   </div>
 </template>
 <script>
@@ -12,8 +11,14 @@ export default {
   name: "Home",
 };
 </script>
-<style>
+<style scoped>
 .home {
     font-family: "Roboto", sans-serif;
+    background-color: rgb(25, 25, 25);
+    height: 100%;
+  }
+
+  h1 {
+    color: #FFF;
   }
 </style>
