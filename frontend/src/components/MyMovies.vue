@@ -2,8 +2,11 @@
     <div class="movie-row">
         <button @click="scrollAnimation(-15)">﹤</button>
         <div class="movies" ref="movies">
-            <div class="movie-img" v-for="(movie, index) in movies" :key="index">
-                <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie">
+            <div class="movie-item">
+                <img :src="`https://image.tmdb.org/t/p/w500/lFByFSLV5WDJEv3KabbdAF959F2.jpg`" alt="movie">
+            </div>
+            <div class="movie-item">
+                <div class="addMovie">+</div>
             </div>
         </div>
         <button class="buttonNext" @click="scrollAnimation(15)"> ﹥</button>
@@ -11,28 +14,30 @@
 </template>
 <script>
 export default {
-    name: "MovieRow",
-    props: {
-        movies: Array,
-    },
-    methods: {
-        async scrollAnimation(x){
-            for(var i = 0; i < 30; i++){
-                await new Promise(res => {
-                    setTimeout(() => {
-                        res(this.$refs.movies.scrollBy(x, 0))
-                    }, 0)
-                })
-            }
-        },
-    }
+    name: "MyMovies",
+
 }
 </script>
 <style scoped>
-
 .movie-row {
     display: flex;
     align-items: center;
+}
+
+.addMovie {
+    width: 162px;
+    height: 270px;
+    border: 2px solid #FFF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-size: 50px;
+    cursor: pointer;
+    justify-content: center;
+}
+.addMovie:hover{
+    background-color: rgba(169, 169, 169, 0.178);
 }
 
 button {
@@ -55,24 +60,25 @@ button {
 }
 
 .movies{
-    padding-left: 20px;
+    padding-left: 0px;
     overflow: auto;
     display: flex;
     gap: 20px;
     align-items: center;
     height: 280px;
+    width: 100vw;
 }
 
 .movie-row:hover button {
     opacity: 1;
 }
-.movie-img {
-    width: 500px;
+.movie-item {
     height: 280px;
-    display: inline-block;
+    display: flex;
+    align-items: center ;
 }
 
-.movie-img img {
+.movie-item * {
     width: 180px;
     transform: scale(0.9);
     transition: all ease 0.3s;
@@ -80,5 +86,5 @@ button {
 .movie-img img:hover {
     transform: scale(1);
 }
-
+    
 </style>

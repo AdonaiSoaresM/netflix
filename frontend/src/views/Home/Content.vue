@@ -1,26 +1,33 @@
 <template lang="">
     <div class="content">
-        <h1>Filmes Disponíveis</h1>
-        <MovieRow :movies="movies"/>
-        <h1>Recomendados para Você</h1>
-        <MovieRow :movies="movies"/>
+        <h1>Seus Filmes</h1>
+        <MyMovies />
+        <h1>Recomendados Marvel</h1>
+        <MovieRow :movies="moviesHero"/>
+        <h1>Recomendados DC</h1>
+        <MovieRow :movies="moviesRecommended"/>
     </div>
 </template>
 <script>
 import { getMovies } from '@/common/service/tmdb.service';
-import MovieRow from './MovieRow.vue';
+import MovieRow from '../../components/MovieRow.vue';
+import MyMovies from '@/components/MyMovies.vue';
 
 export default {
-    components: { MovieRow },
+    components: { MovieRow, MyMovies },
     name: "Content",
     data() {
         return {
-            movies: []
+            moviesHero: [],
+            moviesRecommended: [],
+
         }
     },
     async mounted(){
-        let response = await getMovies();
-        this.movies = response.items
+        let response = await getMovies(1);
+        this.moviesHero = response.items
+        response = await getMovies(3);
+        this.moviesRecommended = response.items
     }
 }
 </script>
@@ -34,5 +41,6 @@ export default {
 h1 {
     color: #FFF;
     margin-left: 30px;
+    margin-top: 0px;
 }
 </style>

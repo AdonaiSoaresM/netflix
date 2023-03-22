@@ -1,8 +1,8 @@
 import { get } from "../api/api-tmdb";
 
-export async function getMovies(){
+export async function getMovies(page){
 
-    var response = await get("/3/list/1");
+    var response = await get(`/3/list/${page}`);
     
     return response.data;
 }

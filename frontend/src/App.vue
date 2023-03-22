@@ -40,6 +40,7 @@ export default {
   margin: 0px;
   padding: 0px;
   font-family: 'Roboto';
+  overflow: auto;
 }
 
 *::-webkit-scrollbar {
