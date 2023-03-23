@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;

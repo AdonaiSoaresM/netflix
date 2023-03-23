@@ -6,16 +6,24 @@
                 <img :src="`https://image.tmdb.org/t/p/w500/lFByFSLV5WDJEv3KabbdAF959F2.jpg`" alt="movie">
             </div>
             <div class="movie-item">
-                <div class="addMovie">+</div>
+                <div class="addMovie" @click="addMovie">+</div>
             </div>
         </div>
         <button class="buttonNext" @click="scrollAnimation(15)"> ﹥</button>
     </div>
 </template>
 <script>
+import useModalForm from '@/hooks/useModalForm';
+
+const modal  = useModalForm();
+
 export default {
     name: "MyMovies",
-
+    methods: {
+        addMovie(){
+            modal.open()
+        }
+    }
 }
 </script>
 <style scoped>

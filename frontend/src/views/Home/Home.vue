@@ -1,5 +1,6 @@
 <template lang="">
   <div class="home">
+    <ModalFormMovie />
     <Header />
     <MovieTarget />
     <Content />
@@ -9,9 +10,10 @@
 import Header from "./Header.vue";
 import Content from "./Content.vue";
 import MovieTarget from "@/components/MovieTarget.vue";
+import ModalFormMovie from "@/components/ModalFormMovie.vue";
 
 export default {
-  components: { Header, Content, MovieTarget },
+  components: { Header, Content, MovieTarget, ModalFormMovie },
   name: "Home",
 };
 </script>

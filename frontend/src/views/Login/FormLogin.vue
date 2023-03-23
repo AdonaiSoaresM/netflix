@@ -1,18 +1,18 @@
 <template>
-  <div class="formLogin">
+  <form class="formLogin">
     <h1>Entrar</h1>
-    <InputFormLogin
+    <InputForm
       :placeholder="'E-mail'"
       :name="'email'"
       @vmodel="updateData"
     />
-    <InputFormLogin
+    <InputForm
       :placeholder="'Senha'"
       :name="'senha'"
       :type="'password'"
       @vmodel="updateData"
     />
-    <button class="entrar" @click="login">Entrar</button>
+    <button class="entrar" @click.prevent="login">Entrar</button>
     <div class="lembrese">
       <input
         type="checkbox"
@@ -22,17 +22,17 @@
       />
       Lembre-se de mim
     </div>
-  </div>
+  </form>
 </template>
 <script>
 import { useToast } from "vue-toastification";
-import InputFormLogin from "./InputFormLogin.vue";
+import InputForm from "../../components/InputForm.vue";
 import loginService from "@/common/service/jwt.service";
 
 const toast = useToast();
 
 export default {
-  components: { InputFormLogin },
+  components: { InputForm },
   name: "FormLogin",
   data() {
     return {
