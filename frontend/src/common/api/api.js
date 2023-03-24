@@ -15,10 +15,10 @@ async function get(url){
     return response
 }
 
-async function post(url, body){
+async function post(url, body, config){
     let response;
 
-    await axios.post(`${URL_BASE}/${url}`, body).then(resp => {
+    await axios.post(`${URL_BASE}/${url}`, body, config).then(resp => {
         response = resp.data
     }).catch(error => {
         response = error.response.data

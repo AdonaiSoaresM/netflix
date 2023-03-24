@@ -2,8 +2,8 @@
     <div class="movie-row">
         <button @click="scrollAnimation(-15)">﹤</button>
         <div class="movies" ref="movies">
-            <div class="movie-item">
-                <img :src="`https://image.tmdb.org/t/p/w500/lFByFSLV5WDJEv3KabbdAF959F2.jpg`" alt="movie">
+            <div class="movie-item" v-for="(movie, index) in movies" :key="index">
+                <img :src="`${urlBase}/movie/files/image-preview_${movie.id}.jpg`" alt="movie" @click="setMovieTarget(movie)">
             </div>
             <div class="movie-item">
                 <div class="addMovie" @click="addMovie">+</div>
@@ -14,15 +14,32 @@
 </template>
 <script>
 import useModalForm from '@/hooks/useModalForm';
+import movieService from '@/common/service/movie.service';
+import URL_BASE from '@/common/config/config';
+import useMovieTarget from "@/hooks/useMovieTarget";
 
+const movieTarget = useMovieTarget();
 const modal  = useModalForm();
 
 export default {
     name: "MyMovies",
+    data() {
+        return {
+            movies: [],
+            urlBase: URL_BASE,
+        }
+    },
     methods: {
         addMovie(){
             modal.open()
+        },
+        setMovieTarget(movie){
+            movieTarget.open(movie, true)
         }
+    },
+    async mounted(){
+        var response = await movieService.get();
+        this.movies = response.data;
     }
 }
 </script>
@@ -90,8 +107,9 @@ button {
     width: 180px;
     transform: scale(0.9);
     transition: all ease 0.3s;
+    cursor: pointer;
 }
-.movie-img img:hover {
+.movie-item *:hover {
     transform: scale(1);
 }
     

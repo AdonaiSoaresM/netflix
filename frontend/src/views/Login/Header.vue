@@ -13,5 +13,6 @@ export default {
         display: flex;
         width: 100%;
         padding-left: 20px;
+        transition: all ease 1s;
     }
 </style>

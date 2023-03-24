@@ -3,7 +3,7 @@
     class="movie-target"
     id="movie-target"
     :style="`
-      background-image: url(https://image.tmdb.org/t/p/original${this.movie.backdrop_path});
+      background-image: url(${sendURLBackground()});
     `"
   >
     <div class="overlay-x">
@@ -31,7 +31,7 @@
 </template>
 <script>
 import useMovieTarget from '@/hooks/useMovieTarget';
-
+import URL_BASE from '@/common/config/config';
 const event = useMovieTarget()
 
 export default {
@@ -40,6 +40,7 @@ export default {
     return {
         toggle: false,
         movie: null,
+        mymovie: false,
     }
   },
   methods: {
@@ -51,9 +52,10 @@ export default {
             return vote + ".0"
         }
     },
-    toggleMovie(movie){
-        this.movie = {...movie}
+    toggleMovie(param){
+        this.movie = {...param.movie}
         this.toggle = true
+        this.mymovie = param.mymovie;
         this.animateHeader()
     },
     animateHeader(){
@@ -73,6 +75,15 @@ export default {
         header.style.backgroundColor = ""
         home.scroll(0,0)
 
+    },
+    sendURLBackground(){
+      let url;
+      if(this.mymovie){
+        url = `${URL_BASE}/movie/files/image-background_${this.movie.id}.jpg`
+      } else {
+        url = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`
+      }
+      return url;
     }
   },
   

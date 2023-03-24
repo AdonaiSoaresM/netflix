@@ -14,7 +14,7 @@ namespace backend
         public static void AddDependecyInjectionConfiguration(this IServiceCollection service)
         {
             service.AddTransient<IRepositoryUser, RepositoryUser>();
-            Console.WriteLine("Opa");
+            service.AddTransient<IRepositoryMovie, RepositoryMovie>();
         }
 
         public static void AddMediatRConfiguration(this IServiceCollection service)

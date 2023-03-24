@@ -37,7 +37,7 @@ export default {
       }
     },
     setMovieTarget(movie) {
-      event.open(movie);
+      event.open(movie, false);
     },
   },
 };
@@ -89,6 +89,7 @@ button {
   width: 180px;
   transform: scale(0.9);
   transition: all ease 0.3s;
+  cursor: pointer;
 }
 .movie-img img:hover {
   transform: scale(1);
