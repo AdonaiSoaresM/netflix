@@ -21,6 +21,7 @@ export default {
     height: 100px;
     padding: 0px 40px 0px 20px;
     z-index: 100;
+    position: relative;
     margin-bottom: 100px;
 }
 

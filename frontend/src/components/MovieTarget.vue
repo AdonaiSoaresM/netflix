@@ -18,7 +18,7 @@
             {{this.movie.overview}}
           </p>
           <div class="buttons">
-              <button class="play">Assistir</button>
+              <button class="play" @click="goToMovie">Assistir</button>
               <button class="list">+ Minha Lista</button>
           </div>
           <p class="genre">
@@ -32,6 +32,9 @@
 <script>
 import useMovieTarget from '@/hooks/useMovieTarget';
 import URL_BASE from '@/common/config/config';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 const event = useMovieTarget()
 
 export default {
@@ -84,6 +87,15 @@ export default {
         url = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`
       }
       return url;
+    },
+    goToMovie(){
+      if(!this.mymovie) {
+        toast.warning("Você só pode assistir os seus filmes.")
+        return;
+      }
+      this.$router.push({name: "Movie", query: {
+      id: this.movie.id
+      }})
     }
   },
   
