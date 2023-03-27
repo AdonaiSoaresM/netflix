@@ -3,7 +3,7 @@
         <button @click="scrollAnimation(-15)">﹤</button>
         <div class="movies" ref="movies">
             <div class="movie-item" v-for="(movie, index) in movies" :key="index">
-                <img :src="`${urlBase}/movie/files/image-preview_${movie.id}.jpg`" alt="movie" @click="setMovieTarget(movie)">
+                <img  :ref="`item${index}`" alt="movie" :src="urlBlob[index]" @click="setMovieTarget(movie)">
             </div>
             <div class="movie-item">
                 <div class="addMovie" @click="addMovie">+</div>
@@ -18,6 +18,7 @@ import movieService from '@/common/service/movie.service';
 import URL_BASE from '@/common/config/config';
 import useMovieTarget from "@/hooks/useMovieTarget";
 
+
 const movieTarget = useMovieTarget();
 const modal  = useModalForm();
 
@@ -26,7 +27,8 @@ export default {
     data() {
         return {
             movies: [],
-            urlBase: URL_BASE,
+            urlBlob: [],
+            urlBase: URL_BASE
         }
     },
     methods: {
@@ -35,11 +37,26 @@ export default {
         },
         setMovieTarget(movie){
             movieTarget.open(movie, true)
+        },
+        async getSrc(){
+            this.movies.forEach(async (movie, index) => {
+                await fetch(`${URL_BASE}/movie/files/${movie.id}/image-preview.jpg`, {
+                    headers: { Authorization: `Bearer ${window.localStorage.getItem("token")}` }
+                }).then(response => {
+                    response.blob().then(blob => {
+                        const url = URL.createObjectURL(blob)
+                        this.urlBlob[index] = url
+                    });
+                })
+
+            })
+
         }
     },
-    async mounted(){
+    async created(){
         var response = await movieService.get();
         this.movies = response.data;
+        this.getSrc()
     }
 }
 </script>

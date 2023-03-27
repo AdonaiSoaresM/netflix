@@ -111,6 +111,10 @@ export default {
     checkUpload(event) {
       let progress = ((event.loaded * 100) / event.total).toString()
       this.uploadProgress = `- ${progress.substring(0, progress.indexOf("."))}%`;
+      if(event.progress == 1){
+        this.uploadProgress = "";
+        this.uploadStatus = "Processing"
+      }
     },
     endUpload(response) {
       if (response.sucess) {

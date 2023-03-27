@@ -3,6 +3,7 @@ using Domain.Commands.AddMovie;
 using Domain.Commands.DeleteMovie;
 using Domain.Commands.GetMovies;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -30,19 +31,21 @@ namespace API.Controllers
             return BadRequest(response);
         }
 
-        [HttpGet("files/{filename}")]
-        public Task<FileStreamResult> Media(string filename)
+        [Authorize]
+        [HttpGet("files/{id}/{filename}")]
+        public Task<FileStreamResult> Media(string id, string filename)
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", filename);
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", id, filename);
 
             var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1000, false);
 
-            var mimeType = Path.GetExtension(path) == ".mp4" ? "video/mp4" : "image/jpeg";
+            var mimeType = Path.GetExtension(path) == ".m3u8" ? "application/vnd.apple.mpegurl" : "image/jpeg";
 
             var file = File(stream, contentType: mimeType, enableRangeProcessing: true);
 
             return Task.FromResult(file);
         }
+
 
         [HttpPost("add")]
         [DisableRequestSizeLimit,

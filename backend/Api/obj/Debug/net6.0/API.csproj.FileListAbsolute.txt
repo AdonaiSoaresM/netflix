@@ -69,3 +69,8 @@ C:\Users\Adonai\Desktop\netflix\backend\Api\obj\Debug\net6.0\API.pdb
 C:\Users\Adonai\Desktop\netflix\backend\Api\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\Adonai\Desktop\netflix\backend\Api\obj\Debug\net6.0\ref\API.dll
 C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\FFMpegCore.dll
+C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\Instances.dll
+C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\Adonai\Desktop\netflix\backend\Api\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

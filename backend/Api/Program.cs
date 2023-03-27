@@ -2,6 +2,20 @@ using backend;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              policy.WithOrigins("http://localhost:8080",
+                                                  "http://localhost")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod()
+                                                  .AllowAnyOrigin();
+                          });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -39,10 +53,7 @@ builder.Services.AddDbContextConfiguration();
 builder.Services.AddJwtBearerConfiguration(builder.Configuration);
 
 var app = builder.Build();
-app.UseCors(options =>
-{
-    options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-});
+app.UseCors(MyAllowSpecificOrigins);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
