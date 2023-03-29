@@ -23,6 +23,12 @@ namespace Domain.Commands.DeleteMovie
         {
             var movie = _repositoryMovie.Find(request.Id);
 
+            if (movie == null)
+            {
+                AddNotification("Movie", "Movie not found.");
+                return Task.FromResult(new CommandResponse(this));
+            }
+
             _repositoryMovie.Delete(movie);
             _repositoryMovie.Commit();
 
