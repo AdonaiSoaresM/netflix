@@ -14,7 +14,7 @@ namespace API.Extensions
             Console.WriteLine("________________________________________________________________");
             var id = Data.GetType().GetProperty("Id").GetValue(Data);
 
-            var pathFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads\\" + id);
+            var pathFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", id.ToString());
 
             Directory.CreateDirectory(pathFolder);
 

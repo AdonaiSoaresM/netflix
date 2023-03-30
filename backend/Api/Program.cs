@@ -49,11 +49,12 @@ builder.Services.AddSwaggerGen(config =>
 });
 builder.Services.AddDependecyInjectionConfiguration();
 builder.Services.AddMediatRConfiguration();
-builder.Services.AddDbContextConfiguration();
 builder.Services.AddJwtBearerConfiguration(builder.Configuration);
+builder.Services.AddDbContextConfiguration(builder.Environment);
 
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -62,6 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseDataBaseConfiguration();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -16,7 +16,6 @@ namespace backend.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] AddUserRequest request)
         {

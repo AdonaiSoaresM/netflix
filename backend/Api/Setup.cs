@@ -23,12 +23,27 @@ namespace backend
             service.AddMediatR(options => options.RegisterServicesFromAssembly(assembly));
         }
 
-        public static void AddDbContextConfiguration(this IServiceCollection service)
+        public static void AddDbContextConfiguration(this IServiceCollection service, IWebHostEnvironment environment)
         {
             var builder = WebApplication.CreateBuilder();
-            service.AddDbContext<ProjectContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerWindows")));
+            String ConnectionType;
+
+            if (environment.EnvironmentName == "Docker") {
+                ConnectionType = "SqlServerDocker";
+                }
+            else {
+                ConnectionType = "SqlServerWindows";
+            };
+
+            service.AddDbContext<ProjectContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(ConnectionType)));
         }
 
+        public static void UseDataBaseConfiguration(this IApplicationBuilder app)
+        {
+            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+            using var context = serviceScope.ServiceProvider.GetService<ProjectContext>();
+            context.Database.Migrate();
+        }
         public static void AddJwtBearerConfiguration(this IServiceCollection service, IConfiguration configuration)
         {
             service.AddSingleton<IJWTService, JWTService>();

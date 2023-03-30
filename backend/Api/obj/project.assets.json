@@ -7870,11 +7870,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Api\\API.csproj",
+      "projectPath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\api\\API.csproj",
       "packagesPath": "C:\\Users\\Adonai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Api\\obj\\",
+      "outputPath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Adonai\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7891,8 +7891,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Data\\Data.csproj"
+            "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Data\\Data.csproj"
             }
           }
         }

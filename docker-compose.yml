@@ -1,0 +1,33 @@
+version: '2.2'
+
+services:
+  apidotnet:
+    build: ./backend
+    ports:
+      - "5077:5077"
+    environment:
+      - ASPNETCORE_URLS=http://+:5077
+      - ASPNETCORE_ENVIRONMENT=Docker
+    depends_on:
+      sqlserver:
+          condition: service_healthy  
+          
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=lueKooko@23
+    healthcheck:
+        test: "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P lueKooko@23"
+        interval: 2s
+        timeout: 20s
+        retries: 10
+  
+  vueapp:
+    build: ./frontend
+    ports:
+      - "80:80"
+
+

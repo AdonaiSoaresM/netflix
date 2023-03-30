@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2MfHW879Zy5nFWYdLQ+4ihATeGoS81nvWXBoH1w0/rL4BHEJ51G5WxXGPT2NViUnuY9TEN56Kl1droaW+TEPqA==",
+  "dgSpecHash": "NcFPFBFEKbRLhWPHzx0EwPFB6kooKoBRTF7FMKRJPRgoEcuy7dJalLKztfRr4WLV8OOuszHfTiVaw4nhn6L9mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adonai\\Desktop\\netflix\\backend\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adonai\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\Adonai\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
