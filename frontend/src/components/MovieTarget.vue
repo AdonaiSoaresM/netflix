@@ -80,15 +80,6 @@ export default {
       header.style.backgroundColor = "";
       home.scroll(0, 0);
     },
-    // sendURLBackground() {
-    //   let url;
-    //   if (this.mymovie) {
-    //     url = `${URL_BASE}/movie/files/image-background_${this.movie.id}.jpg`;
-    //   } else {
-    //     url = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
-    //   }
-    //   return url;
-    // },
     async sendURLBackground() {
       if (this.mymovie) {
         await this.setBlobImage();

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\Domain.csproj": {}
+    "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\Domain.csproj": {
+    "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Adonai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Adonai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

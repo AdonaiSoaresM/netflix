@@ -1,7 +1,4 @@
-﻿using FFMpegCore.Pipes;
-using FFMpegCore;
-using FFMpegCore.Enums;
-using FFMpegCore.Arguments;
+﻿using FFMpegCore;
 
 namespace API.Extensions
 {

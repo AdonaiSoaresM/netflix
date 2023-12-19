@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kH35ltPCrYwI12VPCLzSRvESSxpEcTV9sJaJu6vXv5ayiAPxb+rI/ubgzDBSc27wh8WG7fEDXjLrWWcW3LzQyA==",
+  "dgSpecHash": "VxjOS+nF8o3dAsHG13lvkgvH+BU7eIO76KudfLj5PYf40YSuh8CE7dGcc9LV0PQ66hVhrZoqK/pErMqBI0JgUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adonai\\desktop\\netflix\\backend\\api\\API.csproj",
+  "projectFilePath": "C:\\Users\\Adonai\\Documents\\Projetos\\netflix\\backend\\Api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adonai\\.nuget\\packages\\ffmpegcore\\5.1.0\\ffmpegcore.5.1.0.nupkg.sha512",
     "C:\\Users\\Adonai\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
