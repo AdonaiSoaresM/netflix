@@ -75,6 +75,19 @@ namespace API.Controllers
             return BadRequest(response);
         }
 
+        [HttpPost("test")]
+        public async Task<IActionResult> Test(IFormFile arquivo)
+        {
+            var pathFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            string pathMp4 = Path.Combine(pathFolder, "teste.mp4");
+
+            using (var stream = new FileStream(pathMp4, FileMode.Create))
+            {
+                await arquivo.CopyToAsync(stream);
+            }
+
+            return Ok();
+        }
         [HttpDelete("files/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

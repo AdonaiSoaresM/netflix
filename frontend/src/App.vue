@@ -4,22 +4,20 @@
 
 <script>
 import jwtService from './common/service/jwt.service';
-import router from './router/router';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast()
-router.beforeEach(async (to) => {
-  if(to.name != "Login"){
+export default {
+  name: 'App',
+  async mounted(){
+    if(this.$route.name !== "Login" && this.$route.name !== undefined){
     const token = await jwtService.validateToken()
     if(!token){
-      router.push("/login")
+      this.$router.push("/login")
       toast.error("Please, login again.")
     }
   }
-})
-
-export default {
-  name: 'App',
+  }
 }
 </script>
 

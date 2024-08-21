@@ -5,12 +5,14 @@
       :placeholder="'E-mail'"
       :name="'email'"
       @vmodel="updateData"
+      initial-value="admin@gmail.com"
     />
     <InputForm
       :placeholder="'Senha'"
       :name="'senha'"
       :type="'password'"
       @vmodel="updateData"
+      initial-value="1234"
     />
     <button class="entrar" @click.prevent="login">Entrar</button>
     <div class="lembrese">
@@ -36,8 +38,8 @@ export default {
   name: "FormLogin",
   data() {
     return {
-      email: "",
-      senha: "",
+      email: "admin@gmail.com",
+      senha: "1234",
       lembrese: "",
     };
   },

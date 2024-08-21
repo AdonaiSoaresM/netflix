@@ -1,10 +1,11 @@
 import api from "../api/api";
+import { store } from "@/main.js";
 
 async function login(body){
     const response = await api.post("user/login", body)
     
     if(response.sucess) 
-       await window.localStorage.setItem("token",response.data.token)
+       store.commit("setToken", response.data.token)
 
     return response
 }

@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Data.Repositories;
+using Data.Seeder;
 using Data.Services;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,11 +39,14 @@ namespace backend
             service.AddDbContext<ProjectContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(ConnectionType)));
         }
 
-        public static void UseDataBaseConfiguration(this IApplicationBuilder app)
+        public async static void UseDataBaseConfiguration(this IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
             using var context = serviceScope.ServiceProvider.GetService<ProjectContext>();
-            context.Database.Migrate();
+            if (context != null) { 
+                await context!.Database.MigrateAsync();
+                await Seeder.CreateAdminUser(context);
+            }
         }
         public static void AddJwtBearerConfiguration(this IServiceCollection service, IConfiguration configuration)
         {

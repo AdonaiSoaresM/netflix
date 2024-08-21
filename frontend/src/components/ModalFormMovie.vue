@@ -67,7 +67,7 @@
 <script>
 import InputForm from "./InputForm.vue";
 import useModalForm from "@/hooks/useModalForm";
-import MovieService from "@/common/service/movie.service";
+// import MovieService from "@/common/service/movie.service";
 import SpinnerLoading from "./SpinnerLoading.vue";
 import { useToast } from "vue-toastification";
 
@@ -96,16 +96,22 @@ export default {
       this[input.field] = input.value;
     },
     async sendForm() {
-      this.uploadStatus = "Uploading";
-      const fd = new FormData(this.$refs.form);
-      var response = await MovieService.post(fd, this.checkUpload);
-      if(response.sucess) this.endUpload(response);
+      fetch('http://localhost:5077/movie/test', {
+        method: 'POST',
+        body: document.querySelector("#video").files[0],
+        headers: {
+          'Content-Type': 'application/octet-stream'
+        }
+      })
+      // this.uploadStatus = "Uploading";
+      // const fd = new FormData(this.$refs.form);
+      // var response = await MovieService.post(fd, this.checkUpload);
+      // if(response.sucess) this.endUpload(response);
     },
     closeModal() {
       this.uploadStatus = "";
       this.uploadProgress = "";
       modal.close();
-      window.location.reload()
 
     },
     checkUpload(event) {

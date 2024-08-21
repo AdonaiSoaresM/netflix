@@ -11,10 +11,14 @@ export default {
             value: "",
         }
     },
+    mounted(){
+        this.value = this.initialValue
+    },
     props: {
         placeholder: String,
         type: { type: String, default: "text" },
-        name: { type: String, required: true }
+        name: { type: String, required: true },
+        initialValue: { type: String, default: ""}
     },
     watch: {
         value(newValue){
