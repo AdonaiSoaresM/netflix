@@ -19,27 +19,31 @@ export default {
   },
   methods: {
     renderVideo(id) {
-      var video = this.$refs.video
+      var video = this.$refs.video;
       var videoSrc = `${URL_BASE}/movie/files/${id}/video.m3u8`;
-      console.log(videoSrc);
+      const token = this.$store.getters.getToken;
+      video.src = videoSrc;
       if (Hls.isSupported()) {
-        console.log("!opa");
         var config = {
           xhrSetup: function (xhr) {
-            xhr.setRequestHeader("Authorization", `Bearer ${window.localStorage.getItem("token")}`);
+            xhr.setRequestHeader(
+              "Authorization",
+              `Bearer ${token}`
+            );
           },
         };
         var hls = new Hls(config);
         hls.loadSource(videoSrc);
         hls.attachMedia(video);
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = videoSrc;
       }
     },
   },
   mounted() {
     const query = this.$route.query;
-    console.log(query);
     if (query.id) {
-      this.renderVideo(query.id)
+      this.renderVideo(query.id);
     } else {
       this.$router.push("/");
     }

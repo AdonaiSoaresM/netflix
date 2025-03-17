@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class MovieController : Controller
     {
@@ -17,6 +18,7 @@ namespace API.Controllers
         {
             _mediator = mediator;
         }
+
 
         [HttpGet("get")]
         public async Task<IActionResult> List()
@@ -31,7 +33,6 @@ namespace API.Controllers
             return BadRequest(response);
         }
 
-        [Authorize]
         [HttpGet("files/{id}/{filename}")]
         public Task<FileStreamResult> Media(string id, string filename)
         {

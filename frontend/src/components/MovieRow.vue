@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     async scrollAnimation(x) {
-      window.addEventListener("whell", console.log);
       for (var i = 0; i < 30; i++) {
         await new Promise((res) => {
           setTimeout(() => {

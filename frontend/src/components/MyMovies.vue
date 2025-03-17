@@ -18,7 +18,6 @@ import movieService from '@/common/service/movie.service';
 import URL_BASE from '@/common/config/config';
 import useMovieTarget from "@/hooks/useMovieTarget";
 
-
 const movieTarget = useMovieTarget();
 const modal  = useModalForm();
 
@@ -41,7 +40,7 @@ export default {
         async getSrc(){
             this.movies.forEach(async (movie, index) => {
                 await fetch(`${URL_BASE}/movie/files/${movie.id}/image-preview.jpg`, {
-                    headers: { Authorization: `Bearer ${window.localStorage.getItem("token")}` }
+                    headers: { Authorization: `Bearer ${this.$store.getters.getToken}` }
                 }).then(response => {
                     response.blob().then(blob => {
                         const url = URL.createObjectURL(blob)

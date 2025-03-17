@@ -1,26 +1,37 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from '@/router/router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "@/router/router";
 import Toast, { POSITION } from "vue-toastification";
-import { createStore } from 'vuex';
+import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 import "vue-toastification/dist/index.css";
 export const store = createStore({
-    state: {
-        token: null,
-      },
-    mutations: {
-        setToken(state, token) {
-            state.token = token;
-        },
+  state: {
+    token: null,
+  },
+  getters: {
+    getToken(state) {
+      return state.token;
     },
-    })
+  },
+  mutations: {
+    setToken(state, token) {
+      state.token = token;
+    },
+  },
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
+});
 const optionsToast = {
-    position: POSITION.BOTTOM_RIGHT
-}
+  position: POSITION.BOTTOM_RIGHT,
+};
 
-const app = createApp(App)
-app.use(router)
-app.use(Toast, optionsToast)
-app.use(store)
-app.mount('#app')
+const app = createApp(App);
+app.use(router);
+app.use(Toast, optionsToast);
+app.use(store);
+app.mount("#app");

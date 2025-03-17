@@ -10,7 +10,7 @@ const toast = useToast()
 export default {
   name: 'App',
   async mounted(){
-    if(this.$route.name !== "Login" && this.$route.name !== undefined){
+    if(this.$route.name !== "Login"){
     const token = await jwtService.validateToken()
     if(!token){
       this.$router.push("/login")

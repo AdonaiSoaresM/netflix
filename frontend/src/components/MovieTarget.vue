@@ -92,7 +92,7 @@ export default {
         `${URL_BASE}/movie/files/${this.movie.id}/image-background.jpg`,
         {
           headers: {
-            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+            Authorization: `Bearer ${this.$store.getters.getToken}`,
           },
         }
       ).then((response) => {

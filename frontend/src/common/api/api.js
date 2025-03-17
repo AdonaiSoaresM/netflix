@@ -8,7 +8,6 @@ function config(){
 
 async function get(url){
     let response;
-    console.log(store.state.token)
     await axios.get(`${URL_BASE}/${url}`, config()).then(resp => {
         response = resp.data
     }).catch(error => {
